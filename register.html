@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Registration | OIAFS 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .registration-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; background: linear-gradient(135deg, #0A1628 0%, #0F1D32 100%); }
+        .registration-container { width: 100%; max-width: 700px; background: #162540; border: 1px solid #D4AF37; padding: 50px; }
+        .registration-header { text-align: center; margin-bottom: 40px; }
+        .category-badge { display: inline-block; padding: 8px 20px; background: #D4AF37; color: #0A1628; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+        .registration-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .registration-header p { color: rgba(255, 255, 255, 0.75); }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .category-fields { display: none; grid-column: 1 / -1; padding: 25px; background: #0A1628; border: 1px solid rgba(212, 175, 55, 0.2); margin-top: 10px; }
+        .category-fields.active { display: block; }
+        .category-fields h3 { font-size: 1.1rem; color: #D4AF37; margin-bottom: 20px; }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-top: 20px; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-top: 3px; }
+        .checkbox-group label { font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); cursor: pointer; }
+        .form-success { text-align: center; padding: 40px; display: none; }
+        .form-success.active { display: block; }
+        .success-icon { width: 60px; height: 60px; background: #27AE60; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #FFFFFF; margin: 0 auto 20px; }
+        .form-success h2 { font-size: 2rem; margin-bottom: 20px; }
+        .success-details { background: #0A1628; padding: 30px; margin: 30px 0; text-align: left; }
+        .success-details h3 { color: #D4AF37; margin-bottom: 15px; font-size: 1rem; }
+        .success-details ul { list-style: none; }
+        .success-details li { padding: 8px 0; color: rgba(255, 255, 255, 0.75); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 600px) {
+            .registration-container { padding: 30px 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <section class="registration-page">
+        <div class="registration-container">
+            <div class="registration-header" id="registrationHeader">
+                <span class="category-badge" id="categoryBadge">Designer</span>
+                <h1>Complete Your Registration</h1>
+                <p>Please provide additional details to finalize your application</p>
+            </div>
+            
+            <form class="registration-form" id="registrationForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="regFirstName">First Name *</label>
+                        <input type="text" id="regFirstName" name="firstName" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="regLastName">Last Name *</label>
+                        <input type="text" id="regLastName" name="lastName" required placeholder="Enter your last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email Address *</label>
+                        <input type="email" id="regEmail" name="email" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Mobile Number *</label>
+                        <input type="tel" id="regPhone" name="phone" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="regSocial">Social Media Handle</label>
+                        <input type="text" id="regSocial" name="socialHandle" placeholder="@username (Instagram/TikTok)">
+                    </div>
+                    <div class="form-group">
+                        <label for="regLocation">City, State</label>
+                        <input type="text" id="regLocation" name="cityState" placeholder="Orlando, FL">
+                    </div>
+                    <div class="form-group">
+                        <label for="regExperience">Experience Level</label>
+                        <select id="regExperience" name="experienceLevel">
+                            <option value="">Select experience level</option>
+                            <option value="beginner">Beginner (0-2 years)</option>
+                            <option value="intermediate">Intermediate (3-5 years)</option>
+                            <option value="experienced">Experienced (5+ years)</option>
+                            <option value="professional">Professional/Established</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPortfolio">Portfolio/Website Link</label>
+                        <input type="url" id="regPortfolio" name="portfolioLink" placeholder="https://...">
+                    </div>
+                    
+                    <div class="category-fields" id="designerFields">
+                        <h3>Designer Details</h3>
+                        <div class="form-group">
+                            <label for="collectionName">Collection Name</label>
+                            <input type="text" id="collectionName" name="collectionName" placeholder="Name of your collection">
+                        </div>
+                        <div class="form-group">
+                            <label for="piecesCount">Number of Pieces</label>
+                            <select id="piecesCount" name="piecesCount">
+                                <option value="">Select count</option>
+                                <option value="5-10">5-10 pieces</option>
+                                <option value="11-15">11-15 pieces</option>
+                                <option value="16-20">16-20 pieces</option>
+                                <option value="20+">20+ pieces</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="category-fields" id="modelFields">
+                        <h3>Model Details</h3>
+                        <div class="form-group">
+                            <label for="modelHeight">Height</label>
+                            <input type="text" id="modelHeight" name="height" placeholder="e.g., 5'9\">">
+                        </div>
+                        <div class="form-group">
+                            <label for="modelMeasurements">Measurements (Bust/Waist/Hips)</label>
+                            <input type="text" id="modelMeasurements" name="measurements" placeholder="e.g., 34-26-36">
+                        </div>
+                    </div>
+                    
+                    <div class="category-fields" id="sponsorFields">
+                        <h3>Sponsor Details</h3>
+                        <div class="form-group">
+                            <label for="companyName">Company/Organization Name</label>
+                            <input type="text" id="companyName" name="companyName" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="budgetRange">Sponsorship Budget Range</label>
+                            <select id="budgetRange" name="budgetRange">
+                                <option value="">Select budget range</option>
+                                <option value="500-1000">$500 - $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000+">$10,000+</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="termsAccept" name="termsAccepted" required>
+                            <label for="termsAccept">
+                                I agree to the terms and conditions of the Orlando African Fashion Show 2026. 
+                                I understand that submission does not guarantee acceptance and that OIAFS reserves 
+                                the right to review all applications. *
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Complete Registration</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="form-success" id="registrationSuccess">
+                <div class="success-icon">✓</div>
+                <h2>Registration Complete!</h2>
+                <p>Thank you for registering for OIAFS 2026. We have received your application and will be in touch soon.</p>
+                <div class="success-details">
+                    <h3>What happens next?</h3>
+                    <ul>
+                        <li>✓ Our team will review your application within 5-7 business days</li>
+                        <li>✓ You will receive a confirmation email with next steps</li>
+                        <li>✓ Selected participants will be contacted for additional information</li>
+                        <li>✓ Follow us on social media for updates @orlandoafricanfashion</li>
+                    </ul>
+                </div>
+                <a href="index.html" class="btn btn-secondary">
+                    <span>Return to Homepage</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || 'participant';
+        const email = urlParams.get('email') || '';
+        
+        const categoryLabels = {
+            designer: 'Designer',
+            model: 'Model',
+            volunteer: 'Volunteer',
+            sponsor: 'Sponsor',
+            vendor: 'Vendor',
+            attend: 'Attendee',
+            press: 'Press/Media'
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('categoryBadge').textContent = categoryLabels[category] || 'Participant';
+            const categoryFields = document.getElementById(category + 'Fields');
+            if (categoryFields) {
+                categoryFields.classList.add('active');
+            }
+            document.getElementById('regEmail').value = email;
+            
+            document.getElementById('registrationForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                document.getElementById('registrationForm').style.display = 'none';
+                document.getElementById('registrationHeader').style.display = 'none';
+                document.getElementById('registrationSuccess').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
